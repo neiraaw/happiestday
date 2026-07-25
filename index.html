@@ -69,22 +69,20 @@
             box-sizing: border-box;
         }
 
-
-        h1 {
-            font-family: 'Pinyon Script', cursive;
-            font-size: 55px;
-            margin-bottom: 10px;
-            color: #ffeaa7;
-            text-shadow: 0 0 12px rgba(255, 234, 167, 0.6);
-            font-weight: normal;
-        }
-
-
-
         /* --- login page bos --- */
-
         #login-screen {
             display: block;
+        }
+
+        .title-cie {
+            font-size: 32px;
+            margin-top: 0;
+            margin-bottom: 8px;
+            color: #ffeaa7;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px rgba(255, 234, 167, 0.4);
+            display: inline-block;
+            animation: floatGently 3s ease-in-out infinite;
         }
 
         input[type="password"] {
@@ -126,31 +124,70 @@
             cursor: pointer;
             font-size: 16px;
             font-weight: bold;
-            transition: 0.3s;
+            transition: transform 0.2s ease, background-color 0.3s ease;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            animation: popUp 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.2s backwards;
+            animation: popUp 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.15s backwards;
         }
 
         .btn-utama:hover {
             background-color: #ffeaa7;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(255, 234, 167, 0.4);
-            background-color: #ffeaa7;
             transform: scale(1.08);
+            box-shadow: 0 8px 20px rgba(255, 234, 167, 0.4);
         }
 
-
-
-        /* --- ini dia gongnya --- */
-
+        /* --- main content --- */
         #main-content {
             display: none;
         }
 
+        /* --- main headerlol --- */
+        .main-title {
+            font-family: 'Pinyon Script', cursive;
+            font-size: 55px;
+            font-weight: normal;
+            margin-top: 0;
+            margin-bottom: 10px;
+            color: #ffeaa7;
+            text-shadow: 0 0 15px rgba(255, 234, 167, 0.6),
+                         0 0 30px rgba(255, 234, 167, 0.3);
+            display: inline-block;
+            animation: mainTitlePop 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards,
+                       floatRandom 6s ease-in-out infinite 0.8s;
+        }
 
+        /* --- type effect --- */
+        .typing-container {
+            display: inline-block;
+            margin-bottom: 25px;
+        }
 
-        /* --- menu 3 elemen phew --- */
+        .typewriter-text {
+            font-size: 15px;
+            color: rgba(255, 255, 255, 0.9);
+            margin: 0 auto;
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 2px solid #ffeaa7;
+            width: 0;
+        }
 
+        .typewriter-text.start-typing {
+            animation: 
+                typing 3s steps(52, end) forwards,
+                blinkCaret 0.75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes blinkCaret {
+            from, to { border-color: transparent; }
+            50% { border-color: #ffeaa7; }
+        }
+
+        /* --- menu 3 elemen --- */
         .menu-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -192,72 +229,60 @@
             font-weight: bold;
         }
 
-         @keyframes floatGently {
-    0% {
-        transform: translateY(0px) rotate(0deg);
-    }
-    50% {
-        transform: translateY(-8px) rotate(-1deg);
-    }
-    100% {
-        transform: translateY(0px) rotate(0deg);
-    }
-}
+        /* --- keyframess --- */
+        @keyframes floatGently {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-8px) rotate(-1deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+
         @keyframes popUp {
-            0% {
-                opacity: 0;
-                transform: scale(0.5);
-            }
-            70% {
-                transform: scale(1.05);
-            }
-            100% {
-                transform: scale(1);
-            }
+            0% { opacity: 0; transform: scale(0.5); }
+            70% { transform: scale(1.05); }
+            100% { opacity: 1; transform: scale(1); }
         }
 
         @keyframes mainTitlePop {
-            0% {
-                opacity: 0;
-                transform: scale(0.5) translateY(20px);
-            }
-            60% {
-                transform: scale(1.05) translateY(-5px);
-            }
-            100% {
-                opacity: 1;
-                transform: scale(1) translateY(0);
-            }
+            0% { opacity: 0; transform: scale(0.5) translateY(20px); }
+            60% { transform: scale(1.05) translateY(-5px); }
+            100% { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        @keyframes floatRandom {
+            0% { transform: translate(0px, 0px) rotate(0deg); }
+            60% { transform: translate(5px, 8px) rotate(1deg); }
+            100% { transform: translate(0px, 0px) rotate(0deg); }
         }
     </style>
 </head>
 <body>
 
-    <!-- bg bintank -->
+    <!-- bg bintang -->
     <div id="starfield"></div>
 
-    <!-- ====== anjaay jago ====== -->
-
+    <!-- ====== login page ====== -->
     <div id="login-screen" class="content-wrapper">
-        <div style="font-size: 45px; position: relative; top: -10px; margin-bottom: 5px;">🫶🏻</div>
-        <h2 style="font-size: 35px; margin-top: 0; margin-bottom: 8px; color: #ffeaa7; letter-spacing: 2px; text-shadow: 0 0 10px rgba(255, 234, 167, 0.4); animation: floatGently 3s ease-in-out infinite;">cieee udah 16 nih si kids</h2>
-        <p style="font-size: 15px; position: relative; top: -15px; margin-bottom: 10px; color: #ffeeba">oh no! you have to fill the password..</p>
-        <p style="font-size: 12px; opacity: 0.8; color: #ffeaa7; margin-bottom: 10px;">[clue: your fav compliment]</p>
+        <div style="font-size: 45px; position: relative; top: -5px; margin-bottom: 5px;">🫶🏻</div>
+        <h2 class="title-cie">cieee udah 16 nih si kids</h2>
+        <p style="font-size: 15px; margin-top: 0; margin-bottom: 10px; color: #ffeeba">oh no! you have to fill the password..</p>
+        <p style="font-size: 12px; opacity: 0.8; color: #ffeaa7; margin-bottom: 15px;">[clue: your fav compliment]</p>
+        
         <input type="password" id="password-input" placeholder="well what's the password?">
         <br>
         <button class="btn-utama" onclick="cekPassword()">ok</button>
         <p id="error-msg" style="color: #ffeaa7; margin-top: 12px; display: none; font-weight: bold; text-shadow: 0 0 8px rgba(0,0,0,0.3);">lupa apa typo?</p>
     </div>
 
-
-    <!-- ======= gifts ======= -->
-
+    <!-- ======= main content ======= -->
     <div id="main-content" class="content-wrapper">
-        <h1>selamat bertambah umur!</h1>
-        <p style="color: rgba(255, 255, 255, 0.9);">hehe here's kado kecil-kecilan from ur infor girlie</p>
+        <h1 class="main-title">selamat bertambah umur!</h1>
+        
+        <div class="typing-container">
+            <p id="type-text" class="typewriter-text">hehe here's kado kecil-kecilan from ur infor girlie</p>
+        </div>
 
         <div class="menu-grid">
-            <a href="NIHHHHTAROSINIWOIII" target="_blank" class="menu-item">
+            <a href="https://open.spotify.com/playlist/3JLwl02OVWs5ocMVg1UoJ1?si=4owPmn4vSFKrw3TIh7h1xg" target="_blank" class="menu-item">
                 <div class="menu-icon">♫</div>
                 <div class="menu-title">songs</div>
             </a>
@@ -267,47 +292,47 @@
                 <div class="menu-title">written by nera</div>
             </a>
 
-            <a href="ihhhhnihtarosini" target="_blank" class="menu-item">
+            <a href="https://drive.google.com/drive/folders/1JJxcemtJhH2-Q0mfvCZKR3cDsWLAt3HB?usp=drive_link" target="_blank" class="menu-item">
                 <div class="menu-icon">▶︎</div>
                 <div class="menu-title">some(mories)</div>
             </a>
         </div>
     </div>
 
-    <!-- ================= JAVASCRIPT ================= -->
+
+    <!-- ================= jawaskripppp ================= -->
     <script>
         function cekPassword() {
-            const passwordBenar = "neiraku";
+            const passwordBenar = "kiddos";
             const inputUser = document.getElementById("password-input").value;
             const errorMsg = document.getElementById("error-msg");
 
             if (inputUser === passwordBenar) {
                 document.getElementById("login-screen").style.display = "none";
                 document.getElementById("main-content").style.display = "block";
+                
+                document.getElementById("type-text").classList.add("start-typing");
             } else {
                 errorMsg.style.display = "block";
             }
         }
 
-        // BIKIN BINTANG KELAP-KELIP
+        // biar bintangnya kelap kelip
         const starfield = document.getElementById('starfield');
-        const count = 120; // Banyaknya bintang
+        const count = 120;
 
         for (let i = 0; i < count; i++) {
             const star = document.createElement('div');
             star.className = 'star';
             
-            // Ukuran bintang acak (1px - 3.5px)
             const size = Math.random() * 2.5 + 1;
             star.style.width = `${size}px`;
             star.style.height = `${size}px`;
             
-            // Sebar posisi acak di layar
             star.style.left = `${Math.random() * 100}%`;
             star.style.top = `${Math.random() * 100}%`;
             
-            // Durasi kelap-kelip acak
-            const duration = Math.random() * 3 + 1.5; // 1.5 detik - 4.5 detik
+            const duration = Math.random() * 3 + 1.5;
             const delay = Math.random() * 3;
             star.style.animationDuration = `${duration}s`;
             star.style.animationDelay = `${delay}s`;
